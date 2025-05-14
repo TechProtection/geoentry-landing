@@ -42,8 +42,11 @@ const Navbar: React.FC = () => {
           
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-techguard-600 hover:bg-techguard-700 text-white btn-animate">
-              Solicitar Demo
+            <Button 
+              className="bg-techguard-600 hover:bg-techguard-700 text-white btn-animate"
+              onClick={() => window.location.href = 'https://geoentry-site.netlify.app/'}
+            >
+              Registrarse
             </Button>
           </div>
           
@@ -83,8 +86,11 @@ const Navbar: React.FC = () => {
             Contacto
           </a>
           <div className="mt-4">
-            <Button className="w-full bg-techguard-600 hover:bg-techguard-700 text-white btn-animate">
-              Solicitar Demo
+            <Button 
+              className="w-full bg-techguard-600 hover:bg-techguard-700 text-white btn-animate"
+              onClick={() => window.location.href = 'https://geoentry-site.netlify.app/'}
+            >
+              Registrarse
             </Button>
           </div>
         </div>
