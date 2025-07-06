@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import FeatureCard from './FeatureCard';
-import { DoorClosed, MapPin, Lightbulb, Thermometer, BellElectric, Wifi } from 'lucide-react';
+import { MonitorSmartphone, Lightbulb, Snowflake, Coffee, MapPin, Wifi } from 'lucide-react';
 
 const Features: React.FC = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -35,29 +35,29 @@ const Features: React.FC = () => {
 
   const features = [
     {
-      title: 'Cerradura Inteligente',
-      description: 'Control de acceso con contraseña numérica y reconocimiento de huella digital para mayor seguridad.',
-      icon: DoorClosed
+      title: 'Smart TVs',
+      description: 'Enciende y controla tus televisores inteligentes automáticamente al llegar a casa.',
+      icon: MonitorSmartphone // TV inteligente
+    },
+    {
+      title: 'Smart Lights',
+      description: 'Tus luces inteligentes se activan y ajustan según tu presencia y preferencias.',
+      icon: Lightbulb // Foco inteligente
+    },
+    {
+      title: 'Aire Acondicionado',
+      description: 'El sistema activa el aire acondicionado para que tu hogar esté siempre a la temperatura ideal.',
+      icon: Snowflake // Aire acondicionado
+    },
+    {
+      title: 'Máquinas de Café',
+      description: 'Disfruta de tu café listo automáticamente cuando llegas a casa.',
+      icon: Coffee // Café
     },
     {
       title: 'Geolocalización',
       description: 'Detecta automáticamente cuando te acercas a casa y activa los dispositivos inteligentes.',
       icon: MapPin
-    },
-    {
-      title: 'Iluminación Adaptativa',
-      description: 'Las luces se encienden automáticamente según los niveles de luz natural, ahorrando energía.',
-      icon: Lightbulb
-    },
-    {
-      title: 'Control de Temperatura',
-      description: 'Activa el aire acondicionado o la calefacción según las condiciones ambientales y tus preferencias.',
-      icon: Thermometer
-    },
-    {
-      title: 'Aromatizante Automático',
-      description: 'Recibe un ambiente con el aroma perfecto al llegar a casa gracias a la activación automática.',
-      icon: BellElectric
     },
     {
       title: 'Todo en una App',

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { House } from 'lucide-react';
+import geoentryLogo from '../assets/geoentry.png';
 
 const Footer: React.FC = () => {
   return (
@@ -10,11 +10,11 @@ const Footer: React.FC = () => {
           {/* Logo and Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center">
-              <House className="h-8 w-8 text-techguard-400" />
+              <img src={geoentryLogo} alt="GeoEntry logo" className="h-8 w-8 object-contain" />
               <span className="ml-2 text-xl font-bold">GeoEntry</span>
             </div>
             <p className="mt-2 text-gray-400">
-              Por TechGuard - Transformando hogares con tecnología avanzada de automatización y seguridad.
+              Por TechProtection - Transformando hogares con tecnología avanzada de automatización.
             </p>
             <div className="mt-4">
               <p className="text-gray-400">TechGuard © {new Date().getFullYear()}. Todos los derechos reservados.</p>
@@ -46,15 +46,15 @@ const Footer: React.FC = () => {
             <ul className="mt-4 space-y-2">
               <li className="text-gray-400">
                 <span className="block">Correo:</span>
-                <a href="mailto:info@techguard.com" className="hover:text-techguard-300">info@techguard.com</a>
+                <a href="mailto:info@techguard.com" className="hover:text-techguard-300">info@geoentry.com</a>
               </li>
               <li className="text-gray-400">
                 <span className="block">Teléfono:</span>
-                <a href="tel:+1234567890" className="hover:text-techguard-300">+123 456 7890</a>
+                <a href="tel:+1234567890" className="hover:text-techguard-300">+51 930 251 836</a>
               </li>
               <li className="text-gray-400">
                 <span className="block">Dirección:</span>
-                <span>Calle Tecnología 123, Ciudad Innovación</span>
+                <span>Av. Gral. Salaverry 2255, San Isidro 15076</span>
               </li>
             </ul>
           </div>

@@ -180,7 +180,7 @@ const ContactSection: React.FC = () => {
                 <div>
                   <p className="text-sm font-medium text-gray-900">Teléfono</p>
                   <a href="tel:+123456789" className="text-techguard-600 hover:text-techguard-500">
-                    +123 456 789
+                    +51 930 251 836
                   </a>
                 </div>
               </div>
@@ -192,8 +192,8 @@ const ContactSection: React.FC = () => {
                 <div>
                   <p className="text-sm font-medium text-gray-900">Dirección</p>
                   <p className="text-gray-600">
-                    Calle Tecnología 123<br />
-                    Ciudad Innovación, CP 12345
+                    Av. Gral. Salaverry 2255, San Isidro 15076<br />
+                    Lima, Perú
                   </p>
                 </div>
               </div>

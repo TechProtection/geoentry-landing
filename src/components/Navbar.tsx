@@ -1,7 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { House } from 'lucide-react';
+import React, { useState } from 'react';
+import geoentryLogo from '../assets/geoentry.png';
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,56 +14,58 @@ const Navbar: React.FC = () => {
     }
   };
 
+  // Cambia el color de los links según la sección visible
+  const [activeSection, setActiveSection] = React.useState<string>("");
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const features = document.getElementById('features');
+      const contact = document.getElementById('contact');
+      const scrollY = window.scrollY + 80; // Compensa el navbar fijo
+      let section = "";
+      if (contact && scrollY >= contact.offsetTop) {
+        section = "contact";
+      } else if (features && scrollY >= features.offsetTop) {
+        section = "features";
+      }
+      setActiveSection(section);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const linkColor = activeSection === 'features' || activeSection === 'contact' ? 'text-black hover:text-blue-700' : 'text-white hover:text-blue-200';
+
   return (
-    <nav className="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-[20px] border-b border-white/10">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <House className="h-8 w-8 text-techguard-600" />
-            <span className="ml-2 text-xl font-bold text-techguard-800">GeoEntry</span>
-          </div>
-          
+          <a href="#" className={`flex items-center gap-2 text-2xl font-bold logo select-none ${linkColor}`}>
+            <img src={geoentryLogo} alt="GeoEntry logo" className="h-8 w-8 object-contain" />
+            GeoEntry
+          </a>
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-4">
-              <a href="#features" onClick={(e) => handleNavClick(e, 'features')} className="px-3 py-2 rounded-md text-sm font-medium text-techguard-800 hover:text-techguard-600 transition-colors">
-                Características
-              </a>
-              <a href="#how-it-works" onClick={(e) => handleNavClick(e, 'how-it-works')} className="px-3 py-2 rounded-md text-sm font-medium text-techguard-800 hover:text-techguard-600 transition-colors">
-                Cómo funciona
-              </a>
-              <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="px-3 py-2 rounded-md text-sm font-medium text-techguard-800 hover:text-techguard-600 transition-colors">
-                Contacto
-              </a>
-            </div>
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#features" onClick={e => handleNavClick(e, 'features')} className={`font-medium transition-colors ${linkColor}`}>Características</a>
+            <a href="#how-it-works" onClick={e => handleNavClick(e, 'how-it-works')} className={`font-medium transition-colors ${linkColor}`}>Cómo funciona</a>
+            <a href="#contact" onClick={e => handleNavClick(e, 'contact')} className={`font-medium transition-colors ${linkColor}`}>Contacto</a>
+            <a href="https://geoentry-site.netlify.app/" target="_blank" rel="noopener noreferrer" className="ml-4 bg-gradient-to-r from-blue-700 to-blue-400 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:from-blue-800 hover:to-blue-600 transition-all duration-300 border-none cursor-pointer">Registrarse</a>
           </div>
-          
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button 
-              className="bg-techguard-600 hover:bg-techguard-700 text-white btn-animate"
-              onClick={() => window.location.href = 'https://geoentry-site.netlify.app/'}
-            >
-              Registrarse
-            </Button>
-          </div>
-          
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-techguard-800 hover:text-techguard-600 focus:outline-none btn-animate"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-blue-200 focus:outline-none"
               aria-expanded="false"
             >
               <span className="sr-only">Abrir menú principal</span>
-              {/* Icon when menu is closed */}
               {!isMobileMenuOpen ? (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg className="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               ) : (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg className="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               )}
@@ -72,28 +73,12 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile menu, show/hide based on menu state */}
-      <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-          <a href="#features" onClick={(e) => handleNavClick(e, 'features')} className="block px-3 py-2 rounded-md text-base font-medium text-techguard-800 hover:bg-techguard-100">
-            Características
-          </a>
-          <a href="#how-it-works" onClick={(e) => handleNavClick(e, 'how-it-works')} className="block px-3 py-2 rounded-md text-base font-medium text-techguard-800 hover:bg-techguard-100">
-            Cómo funciona
-          </a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="block px-3 py-2 rounded-md text-base font-medium text-techguard-800 hover:bg-techguard-100">
-            Contacto
-          </a>
-          <div className="mt-4">
-            <Button 
-              className="w-full bg-techguard-600 hover:bg-techguard-700 text-white btn-animate"
-              onClick={() => window.location.href = 'https://geoentry-site.netlify.app/'}
-            >
-              Registrarse
-            </Button>
-          </div>
-        </div>
+      {/* Mobile menu */}
+      <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-gradient-to-br from-[#4a90e2] via-[#357abd] to-[#2c5f94] px-4 pt-2 pb-4`}> 
+        <a href="#features" onClick={e => { handleNavClick(e, 'features'); setIsMobileMenuOpen(false); }} className={`block py-2 font-medium ${linkColor}`}>Características</a>
+        <a href="#how-it-works" onClick={e => { handleNavClick(e, 'how-it-works'); setIsMobileMenuOpen(false); }} className={`block py-2 font-medium ${linkColor}`}>Cómo funciona</a>
+        <a href="#contact" onClick={e => { handleNavClick(e, 'contact'); setIsMobileMenuOpen(false); }} className={`block py-2 font-medium ${linkColor}`}>Contacto</a>
+        <a href="https://geoentry-site.netlify.app/" target="_blank" rel="noopener noreferrer" className="block mt-3 bg-gradient-to-r from-blue-700 to-blue-400 text-white px-6 py-2 rounded-full font-semibold shadow-lg text-center hover:from-blue-800 hover:to-blue-600 transition-all duration-300 border-none cursor-pointer">Registrarse</a>
       </div>
     </nav>
   );
