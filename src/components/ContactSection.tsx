@@ -204,7 +204,9 @@ const ContactSection: React.FC = () => {
               <p className="text-gray-600 text-sm mb-4">Disponible para dispositivos iOS y Android</p>
               <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 <a 
-                  href="#" 
+                  href="https://www.mediafire.com/file/nkfwtd9ufjvrf0u/geoentry.apk/file" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto"
                   aria-label="Descargar en App Store"
                 >
@@ -215,7 +217,9 @@ const ContactSection: React.FC = () => {
                   />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.mediafire.com/file/nkfwtd9ufjvrf0u/geoentry.apk/file" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto"
                   aria-label="Descargar en Google Play"
                 >
