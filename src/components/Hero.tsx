@@ -52,9 +52,7 @@ export default function Hero() {
           <span className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]">GeoEntry</span>
         </h1>
         <p className="text-white/90 text-lg md:text-xl mb-8 leading-relaxed animate-slideInUp [animation-delay:0.6s]">
-          Conecta todos tus dispositivos inteligentes en un ecosistema perfecto.<br />
-          TV, iluminación, climatización y electrodomésticos se activan automáticamente<br />
-          cuando detectan tu presencia. El futuro del hogar inteligente está aquí.
+          Tu hogar se activa solo: TV, luces, aire y café listos al llegar.
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-10 animate-slideInUp [animation-delay:0.9s]">
           <a
